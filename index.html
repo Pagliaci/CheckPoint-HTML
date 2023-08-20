@@ -1,38 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Checkpoint</title>
-</head>
-<body>
+  </head>
+  <body>
+    <main class="container-tasks">
+      <h1>Lista de Tarefas</h1>
+      <section class="input-tasks">
+        <form action="#">
+          <input type="text" id="descricao" placeholder="Descrição" required />
+          <input type="text" id="autor" placeholder="Autor" required />
+          <input
+            type="text"
+            id="departamento"
+            placeholder="Departamento"
+            required
+          />
+          <input
+            type="number"
+            id="importancia"
+            placeholder="Importância"
+            min="1"
+            max="5"
+            required
+          />
+          <input type="number" id="valor" placeholder="Valor" />
+          <input type="number" id="duracao" placeholder="Duração" />
+          <button class="btn-add-task" id="adicionar">+</button>
+        </form>
 
-    <h1>Lista de Tarefas</h1>
+        <button class="btn-prio-task" id="priorizar">
+          Criar lista de prioridades
+        </button>
+      </section>
 
-    <input type="text" id="descricao" placeholder="Descrição">
-    <input type="text" id="autor" placeholder="Autor">
-    <input type="text" id="departamento" placeholder="Departamento">
-    <input type="number" id="importancia" placeholder="Importância" min="1" max="5">
-
-
-    <table id="tabela">
-        
-        <th id="desc">Descrição</th>
-        <th id="aut">Autor</th>
-        <th id="dep">Departamento</th>
-        <th id="imp">Importância</th>
-        <th id="adicionar">+</th>
-        <th id="ordenar">Ordenar</th>
-        <th id="lista_descricoes">Lista descrições</th>
-        
-    </table>
-    
-    <ul></ul>       
-    
-
+      <section>
+        <div id="table">
+          <table id="tabela">
+            <thead id="head-table">
+              <th class="title-table" id="desc">Descrição</th>
+              <th class="title-table" id="aut">Autor</th>
+              <th class="title-table" id="dep">Departamento</th>
+              <th class="title-table" id="imp">Importancia</th>
+              <th class="title-table" id="val">Valor</th>
+              <th class="title-table" id="dur">Duração</th>
+              <th class="title-table"></th>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="container-ordered-list">
+        <table>
+          <thead id="head-table">
+              <th class="title-table" id="desc">Descrição</th>
+              <th class="title-table" id="imp">Importancia</th>
+              <th class="title-table"></th>
+          </thead>
+            <tbody id="ordered-body">
+              
+            </tbody>
+        </table>
+      </section>
+    </main>
     <script src="js/script.js"></script>
-    <style>
-        *{border-color: black;border-width: 30;border-style: solid;}
-    </style>
-</body>
+  </body>
 </html>
