@@ -2,8 +2,8 @@ const desc = document.querySelector("#descricao");
 const aut = document.querySelector("#autor");
 const dep = document.querySelector("#departamento");
 const imp = document.querySelector("#importancia");
-const dur = document.querySelector("#duracao")
-const val = document.querySelector("#valor")
+const dur = document.querySelector("#duracao");
+const val = document.querySelector("#valor");
 
 const btnAddTask = document.querySelector("#adicionar");
 const order = document.querySelector("#ordenar");
@@ -25,6 +25,8 @@ function clearInputs() {
   aut.value = "";
   dep.value = "";
   imp.value = "";
+  val.value = "";
+  dur.value = "";
 }
 
 function createNewTask() {
@@ -35,19 +37,20 @@ function createNewTask() {
     dep: dep.value,
     imp: imp.value,
     val: val.value,
-    dur: dur.value
+    dur: dur.value,
   };
+  
+  if(task.desc == "" || task.aut == "" || task.dep == "" || task.imp ==""){
+    return
+  }
+
+  if(task.imp > 5){
+    return
+  }
+  
   const taskRow = document.createElement("tr");
   addNewTask(task);
 
-  // for (let key in task) {
-  //   const value = task[key];
-  //   if (value == "") {
-  //     alert("Adicione as informações da task");
-  //     return;
-  //   }
-  // }
-  
   taskRow.innerHTML = `
       <td>${task.desc}</td>
       <td>${task.aut}</td>
@@ -64,10 +67,29 @@ function createNewTask() {
 
 function deleteTask(idTask) {
   const taskIndex = tasks.findIndex((item) => item.id == idTask);
-  
+
   if (taskIndex !== -1) {
     tasks.splice(taskIndex, 1);
-    const taskRow = document.querySelector(`[id="${idTask}"]`).closest('tr');
+    const taskRow = document.querySelector(`[id="${idTask}"]`).closest("tr");
     taskRow.remove();
   }
+}
+
+const btnOrderPriority = document.querySelector("#btnOrderPriority");
+const listPriority = document.querySelector("#listPriority");
+
+btnOrderPriority.addEventListener("click", showPriorityList);
+
+function showPriorityList() {
+  const orderedList = tasks.slice().sort((a, b) => a.imp - b.imp);
+
+  listPriority.innerHTML = "";
+  orderedList.forEach((task) => {
+    const listItem = document.createElement("tr");
+    listItem.innerHTML = `
+      <td>${task.desc}</td>
+      <td>${task.imp}</td>
+    `;
+    listPriority.appendChild(listItem);
+  });
 }

@@ -29,16 +29,14 @@
           />
           <input type="number" id="valor" placeholder="Valor" />
           <input type="number" id="duracao" placeholder="Duração" />
-          <button class="btn-add-task" id="adicionar">+</button>
+          <button class="btn" id="adicionar">+</button>
         </form>
 
-        <button class="btn-prio-task" id="priorizar">
-          Criar lista de prioridades
-        </button>
+        <button id="btnOrderPriority" class="btn">Ordenar por Importância</button>
       </section>
 
       <section>
-        <div id="table">
+        <div class="table">
           <table id="tabela">
             <thead id="head-table">
               <th class="title-table" id="desc">Descrição</th>
@@ -53,17 +51,17 @@
           </table>
         </div>
       </section>
+
       <section class="container-ordered-list">
-        <table>
-          <thead id="head-table">
+        <div>
+          <table>
+            <thead id="head-table">
               <th class="title-table" id="desc">Descrição</th>
               <th class="title-table" id="imp">Importancia</th>
-              <th class="title-table"></th>
-          </thead>
-            <tbody id="ordered-body">
-              
-            </tbody>
-        </table>
+            </thead>
+            <tbody id="listPriority"></tbody>
+          </table>
+        </div>
       </section>
     </main>
     <script src="js/script.js"></script>
